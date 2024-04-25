@@ -15,9 +15,21 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Searching for: " + searchTerm);
     // Simulated search results
     const results = [
-      { name: "Plant 1", description: "Description of Plant 1" },
-      { name: "Plant 2", description: "Description of Plant 2" },
-      { name: "Plant 3", description: "Description of Plant 3" },
+      {
+        name: "Giant Sequoia",
+        description: "Sequoiadendron giganteum",
+        imageURL: "assets/images/plant_1.jpg",
+      },
+      {
+        name: "Plant 2",
+        description: "Description of Plant 2",
+        imageURL: "image2.jpg",
+      },
+      {
+        name: "Plant 3",
+        description: "Description of Plant 3",
+        imageURL: "image3.jpg",
+      },
     ];
     displayResults(results);
   }
@@ -33,14 +45,30 @@ document.addEventListener("DOMContentLoaded", function () {
     results.forEach((plant) => {
       const plantCard = document.createElement("div");
       plantCard.classList.add("plant-card");
-      plantCard.innerHTML = `
-                <div class="plant-card-content">
-                    <h2>${plant.name}</h2>
-                    <p>${plant.description}</p>
-                </div>
-            `;
+
+      // Create a div for the image
+      const imageContainer = document.createElement("div");
+      imageContainer.classList.add("plant-image");
+      imageContainer.innerHTML = `
+          <img src="${plant.imageURL}" alt="${plant.name} Image">
+        `;
+
+      // Create a div for the text content
+      const textContent = document.createElement("div");
+      textContent.classList.add("plant-card-content");
+      textContent.innerHTML = `
+          <h2>${plant.name}</h2>
+          <p>${plant.description}</p>
+        `;
+
+      // Append image container and text content to the plant card
+      plantCard.appendChild(imageContainer);
+      plantCard.appendChild(textContent);
+
+      // Append the plant card to the fragment
       fragment.appendChild(plantCard);
     });
+    // Append the fragment with all plant cards to the results container
     resultsContainer.appendChild(fragment);
   }
 
