@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "name": "herbarium",
+  "description": "��#\u0000 \u0000h\u0000e\u0000r\u0000b\u0000a\u0000r\u0000i\u0000u\u0000m\u0000\r\u0000 \u0000",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebcopixl/herbarium.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sebcopixl/herbarium/issues"
+  },
+  "homepage": "https://github.com/sebcopixl/herbarium#readme"
+}
