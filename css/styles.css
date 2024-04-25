@@ -10,8 +10,8 @@ body {
 
 /* Header styles */
 .top-bar {
-  background-color: #352f36;
-  color: #f2efea;
+  background-color: #bfcbad;
+  color: #031602;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -25,6 +25,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: calc(100vh - 60px); /* Adjust for header height */
+  font-family: "Roboto", sans-serif;
 }
 
 /* Search container styles */
@@ -45,13 +46,13 @@ button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: #fc7753;
+  color: #f2efea;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #fc8864;
 }
 
 /* Results container styles */
@@ -64,8 +65,8 @@ button:hover {
 
 /* Plant card styles */
 .plant-card {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
+  background-color: #f2efea;
+  border: 1px solid #213600;
   border-radius: 5px;
   padding: 10px;
   margin: 10px;
@@ -75,6 +76,8 @@ button:hover {
 
 .plant-card-content {
   text-align: left;
+  color: #031602;
+  font-family: "Roboto", sans-serif;
 }
 
 .plant-card h2 {
