@@ -10,28 +10,23 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("Please enter a search term.");
       return;
     }
-    // Perform search operation (e.g., fetch data from server)
-    // Replace this with actual search functionality
-    console.log("Searching for: " + searchTerm);
-    // Simulated search results
-    const results = [
-      {
-        name: "Giant Sequoia",
-        description: "Sequoiadendron giganteum",
-        imageURL: "assets/images/plant_1.jpg",
-      },
-      {
-        name: "Plant 2",
-        description: "Description of Plant 2",
-        imageURL: "image2.jpg",
-      },
-      {
-        name: "Plant 3",
-        description: "Description of Plant 3",
-        imageURL: "image3.jpg",
-      },
-    ];
-    displayResults(results);
+
+    // Make a GET request to the backend server to fetch plant data
+    fetch(`http://localhost:3000/plants?search=${searchTerm}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch plant data");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        displayResults(data); // Display the received plant data
+      })
+      .catch((error) => {
+        console.error("Error fetching plant data:", error);
+        // Display an error message to the user
+        resultsContainer.innerHTML = "<p>Error fetching plant data.</p>";
+      });
   }
 
   // Function to display search results
@@ -46,23 +41,15 @@ document.addEventListener("DOMContentLoaded", function () {
       const plantCard = document.createElement("div");
       plantCard.classList.add("plant-card");
 
-      // Create a div for the image
-      const imageContainer = document.createElement("div");
-      imageContainer.classList.add("plant-image");
-      imageContainer.innerHTML = `
-          <img src="${plant.imageURL}" alt="${plant.name} Image">
-        `;
-
       // Create a div for the text content
       const textContent = document.createElement("div");
       textContent.classList.add("plant-card-content");
       textContent.innerHTML = `
-          <h2>${plant.name}</h2>
-          <p>${plant.description}</p>
-        `;
+        <h2>${plant.common_name}</h2>
+        <p>${plant.description}</p>
+      `;
 
-      // Append image container and text content to the plant card
-      plantCard.appendChild(imageContainer);
+      // Append text content to the plant card
       plantCard.appendChild(textContent);
 
       // Append the plant card to the fragment
