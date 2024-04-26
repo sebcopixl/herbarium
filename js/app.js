@@ -6,8 +6,13 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to handle search
   function searchPlants() {
     const searchTerm = searchInput.value.trim();
-    if (searchTerm === "") {
-      alert("Please enter a search term.");
+    if (
+      !searchTerm ||
+      searchTerm.length <= 1 ||
+      !isNaN(parseFloat(searchTerm))
+    ) {
+      // Display "No results found" message for invalid search terms
+      resultsContainer.innerHTML = "<p>No results found.</p>";
       return;
     }
 
@@ -64,4 +69,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Event listener for search button click
   searchButton.addEventListener("click", searchPlants);
+
+  // Event listener for pressing the "Enter" key on the search input field
+  searchInput.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+      // Prevent the default form submission behavior
+      event.preventDefault();
+      // Trigger the search functionality
+      searchPlants();
+    }
+  });
 });
