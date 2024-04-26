@@ -45,9 +45,12 @@ document.addEventListener("DOMContentLoaded", function () {
       const textContent = document.createElement("div");
       textContent.classList.add("plant-card-content");
       textContent.innerHTML = `
-        <h2>${plant.common_name}</h2>
-        <p>${plant.description}</p>
-      `;
+      <h2>${plant.common_name}</h2>
+      <p><strong>Scientific Name:</strong> ${plant.scientific_name}</p>
+      <p><strong>Family:</strong> ${plant.family}</p>
+      <p><strong>Description:</strong> ${plant.description}</p>
+      <p><strong>Habitat:</strong> ${plant.habitat}</p>
+    `;
 
       // Append text content to the plant card
       plantCard.appendChild(textContent);
