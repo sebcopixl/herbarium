@@ -1,12 +1,11 @@
 const express = require("express");
-const mysql = require("mysql");
-const cors = require("cors"); // Import the cors package
+const mysql = require("mysql2"); // Use mysql2 package instead of mysql
+const cors = require("cors");
 
 const app = express();
 
-// Enable CORS middleware
 app.use(cors());
-// MySQL database connection configuration
+
 const connection = mysql.createConnection({
   host: "localhost",
   port: "3306",
@@ -15,17 +14,14 @@ const connection = mysql.createConnection({
   database: "herbarium",
 });
 
-// Connect to MySQL database
 connection.connect((err) => {
   if (err) throw err;
   console.log("Connected to MySQL database");
 });
 
-// API endpoint to retrieve plants matching the search term
 app.get("/plants", (req, res) => {
   const searchTerm = req.query.search;
 
-  // Query the database to retrieve plants matching the search term
   connection.query(
     "SELECT * FROM plants WHERE common_name LIKE ? OR scientific_name LIKE ?",
     [`%${searchTerm}%`, `%${searchTerm}%`],
@@ -35,7 +31,7 @@ app.get("/plants", (req, res) => {
         res.status(500).json({ error: "Internal Server Error" });
         return;
       }
-      res.json(results); // Send plant data as JSON response
+      res.json(results);
     }
   );
 });
