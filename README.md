@@ -40,7 +40,9 @@ To run the Herbarium project locally, follow these steps:
 7. Check the folder "scripts" for the three db files and execute them in MySQL:
 
    create_tables.sql: Create tables for the Herbarium database.
+
    insert_data.sql: Insert initial data into the database.
+
    create_user.sql: Create a user for accessing the database
 
 8. Start the backend server by running `npm start` in the `backend` directory.
