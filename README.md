@@ -20,24 +20,22 @@ The backend handles the core functionality of the Herbarium system, including AP
 
 To run the Herbarium project locally, follow these steps:
 
-## Getting Started
-
-To run the Herbarium project locally, follow these steps:
-
 1. Clone the repository to your local machine.
 2. Navigate to the project directory.
 3. Install dependencies by running `npm install`.
-4. In order to work with MySQL, make sure you have MySQL installed on your machine.
+4. Ensure MySQL is installed on your machine.
 5. Install the `mysql2` package by running `npm install mysql2` in the project directory.
 6. Modify the `server.js` file to match your MySQL configuration:
 
+   ```javascript
    const connection = mysql.createConnection({
-   host: "localhost",
-   port: "3306",
-   user: "root",
-   password: "your_mysql_password", //Replace "your_mysql_password" with your actual MySQL native password
-   database: "herbarium",
+     host: "localhost",
+     port: "3306",
+     user: "root",
+     password: "your_mysql_password", // Replace "your_mysql_password" with your actual MySQL native password
+     database: "herbarium",
    });
+   ```
 
 7. Start the backend server by running `npm start` in the `backend` directory.
 8. Start the frontend server by running `npm start` in the `frontend` directory.
