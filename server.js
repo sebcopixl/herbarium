@@ -11,7 +11,7 @@ const connection = mysql.createConnection({
   host: "localhost",
   port: "3306",
   user: "root",
-  password: "Northface71217/",
+  password: "N/",
   database: "herbarium",
 });
 
