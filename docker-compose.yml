@@ -3,22 +3,24 @@ services:
   # App
   app:
     build: .
-    command: npm run dev
+    command: npm run dev # Start the app in development mode
     ports:
-      - "3000:3000"
+      - "3000:3000" # Forward the container's port 3000 to the host's port 3000
     depends_on:
       db:
         condition: service_healthy
     environment:
       - PORT=3000
     volumes:
-      - .:/app
+      - .:/app # Used to sync files between host and container
+      - /app/node_modules # For dependencies installed in the container
   # Database
   db:
     image: mysql:8.4.0
     ports:
-      - "3306:3306"
+      - "3306:3306" # Forward the container's port 3306 to the host's port 3306
     environment:
+      # TO-DO: Credentials should be stored in a .env file
       MYSQL_ROOT_PASSWORD: Ichimonji
       MYSQL_DATABASE: herbarium
     healthcheck:
@@ -31,4 +33,4 @@ services:
       - ./scripts:/docker-entrypoint-initdb.d
 
 volumes:
-  db-data:
+  db-data: # Persist data between container restarts
