@@ -4,10 +4,18 @@ const cors = require("cors");
 
 const app = express();
 
+// Allow cross-origin requests
 app.use(cors());
 
+// Configure CSP
+app.use((req, res, next) => {
+  res.setHeader("Content-Security-Policy", "default-src 'self' img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline';");
+  next();
+});
+
+// Configure MySQL connection
 const connection = mysql.createConnection({
-  host: "localhost",
+  host: "db",
   port: "3306",
   user: "root",
   password: "Ichimonji",
@@ -17,6 +25,10 @@ const connection = mysql.createConnection({
 connection.connect((err) => {
   if (err) throw err;
   console.log("Connected to MySQL database");
+});
+
+app.get("/", (req, res) => {
+  res.json({ message: "Hello from the server!" });
 });
 
 app.get("/plants", (req, res) => {
