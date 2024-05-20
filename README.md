@@ -18,14 +18,31 @@ The backend handles the core functionality of the Herbarium system, including AP
 
 ## Getting Started
 
-To run the Herbarium project locally, follow these steps:
+### Prerequisites
+- Docker [Install Docker](https://docs.docker.com/get-docker/)
+
+### Why use Docker?
+We use Docker to simplify the setup process for the Herbarium project. Docker allows us to package the frontend, backend, and database components into separate containers, making it easy to deploy the entire system with a single command.
+
+### To run the Herbarium project locally, follow these steps:
 
 1. Clone the repository to your local machine.
 2. Navigate to the project directory.
-3. Install dependencies by running `npm install`.
-4. Ensure MySQL is installed on your machine.
-5. Install the `mysql2` package by running `npm install mysql2` in the project directory.
-6. Modify the `server.js` file to match your MySQL configuration:
+3. Run `docker-compose up` to start the Herbarium project.
+
+*The docker-compose up command is used to start and run the services defined in the docker-compose.yml file. It creates and starts the containers based on the specified configurations.*
+
+*Backend server at: http://localhost:3000*
+
+4. To remove the containers and clean up the system, run `docker-compose down`.
+
+
+
+### Container Setup
+The `docker-compose.yml` file in the project directory defines the services required to run the Herbarium project. It includes the frontend, backend, and database components.
+
+### Database Setup
+The Herbarium project requires a MySQL database to store botanical specimen information.
 
    ```javascript
    const connection = mysql.createConnection({
@@ -37,20 +54,18 @@ To run the Herbarium project locally, follow these steps:
    });
    ```
 
-7. Check the folder "scripts" for the three db files and execute them in MySQL:
+To see the database schema and initial data, check the `scripts` folder in the project directory.
 
-   create_tables.sql: Create tables for the Herbarium database.
+   1.create_tables.sql: Create tables for the Herbarium database.
 
-   insert_data.sql: Insert initial data into the database.
+   2.insert_data.sql: Insert initial data into the database.
 
-   create_user.sql: Create a user for accessing the database
+   23create_user.sql: Create a user for accessing the database
 
-8. Start the backend server by running `npm start` in the `backend` directory.
-9. Start the frontend server by running `npm start` in the `frontend` directory.
-10. Access the Herbarium web portal in your browser at `http://localhost:8080`.
 
 ## Contributors
 
 - [Seb Correa](https://github.com/sebcopixl)
+- [Enrique Zarate](https://github.com/enrique-zarate)
 
 Feel free to customize this README file with additional information specific to your project!
